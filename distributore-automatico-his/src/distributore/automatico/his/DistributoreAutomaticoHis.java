@@ -11,7 +11,7 @@ package distributore.automatico.his;
  */
 public class DistributoreAutomaticoHis {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws erroreException {
         AutomaDistributoreAutomatico a = new AutomaDistributoreAutomatico();
         a.next(new InserimentoSoldi(0.20));
         System.out.println("*************************");

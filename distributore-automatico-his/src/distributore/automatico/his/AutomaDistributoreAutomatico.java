@@ -22,7 +22,7 @@ public class AutomaDistributoreAutomatico implements State {
     }
 
     @Override
-    public void next(Event e) {
+    public void next(Event e) throws erroreException {
         System.out.println("TOTALE: " + totale);
         System.out.println("Siamo nello stato " + stato);
         System.out.println("");
@@ -31,10 +31,10 @@ public class AutomaDistributoreAutomatico implements State {
         System.out.println("Siamo passati nello stato " + stato);
     }
 
-    private class Attesa implements State {
+    private class Attesa implements State  {
 
         @Override
-        public void next(Event e) {
+        public void next(Event e) throws erroreException{
             //Controllo non ci sia un evento non previsto, se si verifica un evento
             //non previsto lancio l'eccezione
             if (e instanceof Caffe || e instanceof InserimentoSoldi || e instanceof Resto) {
@@ -46,6 +46,7 @@ public class AutomaDistributoreAutomatico implements State {
                         System.out.println("EROGAZIONE IN CORSO");
                     } else {
                         System.out.println("DENARO INSUFFICENTE");
+                        
                     }
                 }
                 if (e instanceof InserimentoSoldi) {
@@ -62,6 +63,7 @@ public class AutomaDistributoreAutomatico implements State {
                 }
             } else {
                 System.out.println("Errore evento " + e + "inatteso");
+                throw new erroreException();
             }
         }
 
@@ -70,12 +72,13 @@ public class AutomaDistributoreAutomatico implements State {
     private class Erogazione implements State {
 
         @Override
-        public void next(Event e) {
+        public void next(Event e) throws erroreException {
             if (e instanceof CaffePronto) {
                 totale -= prezzoCaffe;
                 stato = new Pronto();
             } else {
                 System.out.println("Errore evento " + e + "inatteso");
+                throw new erroreException();
             }
         }
     }
@@ -83,11 +86,13 @@ public class AutomaDistributoreAutomatico implements State {
     private class Pronto implements State {
 
         @Override
-        public void next(Event e) {
+        public void next(Event e) throws erroreException{
             if (e instanceof Ritiro) {
                 stato = new Attesa();
             } else {
                 System.out.println("Errore evento " + e + "inatteso");
+                throw new erroreException();
+                
             }
         }
     }

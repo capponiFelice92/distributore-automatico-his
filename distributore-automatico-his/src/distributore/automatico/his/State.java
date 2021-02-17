@@ -10,5 +10,5 @@ package distributore.automatico.his;
  * @author laptop
  */
 public interface State {
-    void next(Event e);
+    void next(Event e) throws erroreException;
 }
