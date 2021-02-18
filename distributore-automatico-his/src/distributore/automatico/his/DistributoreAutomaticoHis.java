@@ -11,8 +11,10 @@ package distributore.automatico.his;
  */
 public class DistributoreAutomaticoHis {
 
-    public static void main(String[] args) throws erroreException {
+    public static void main(String[] args) throws EventoInaspettatoException {
         AutomaDistributoreAutomatico a = new AutomaDistributoreAutomatico();
+        //Genera un eccezione
+        //a.next(new Ritiro());
         a.next(new InserimentoSoldi(0.20));
         System.out.println("*************************");
         a.next(new Caffe());
