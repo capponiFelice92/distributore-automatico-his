@@ -50,8 +50,8 @@ public class AutomaDistributoreAutomatico implements State {
                     }
                 }
                 if (e instanceof InserimentoSoldi) {
-                    totale += ((InserimentoSoldi) e).soldi;
-                    System.out.println("SOLDI INSERITI: " + ((InserimentoSoldi) e).soldi);
+                    totale += ((InserimentoSoldi) e).getSoldi();
+                    System.out.println("SOLDI INSERITI: " + ((InserimentoSoldi) e).getSoldi());
                     System.out.println("TOTALE: " + totale);
                 }
 

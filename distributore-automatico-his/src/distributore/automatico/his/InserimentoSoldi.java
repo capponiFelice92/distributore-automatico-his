@@ -10,11 +10,17 @@ package distributore.automatico.his;
  * @author laptop
  */
 public class InserimentoSoldi implements Event {
-    public double soldi;
+    private double soldi;
 
     public InserimentoSoldi(double soldi) {
         this.soldi = soldi;
     }
+
+    public double getSoldi() {
+        return soldi;
+    }
+    
+    
     
     
 }
